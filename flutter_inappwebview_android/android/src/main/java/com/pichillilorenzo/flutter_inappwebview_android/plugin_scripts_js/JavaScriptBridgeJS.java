@@ -244,17 +244,15 @@ public class JavaScriptBridgeJS {
                         "    });" +
                         "  };" +
                         "}" +
-                        "if (window.top != null && window.top !== window && window." + JAVASCRIPT_BRIDGE_NAME
-                        + " == null) {" +
-                        "  window." + JAVASCRIPT_BRIDGE_NAME + " = {};" +
+                        "if (window != null && window." + JAVASCRIPT_BRIDGE_NAME + " != null) {" +
                         "  window." + JAVASCRIPT_BRIDGE_NAME + ".callHandler = function() {" +
                         "    var _callHandlerID = setTimeout(function(){});" +
                         "    try {" +
-                        "      window.top." + JAVASCRIPT_BRIDGE_NAME
+                        "      window." + JAVASCRIPT_BRIDGE_NAME
                         + "._callHandler(arguments[0], _callHandlerID, JSON.stringify(Array.prototype.slice.call(arguments, 1)));"
                         +
                         "      return new Promise(function(resolve, reject) {" +
-                        "        window.top." + JAVASCRIPT_BRIDGE_NAME
+                        "        window." + JAVASCRIPT_BRIDGE_NAME
                         + "[_callHandlerID] = {resolve: resolve, reject: reject};" +
                         "      });" +
                         "    } catch (error) {" +
